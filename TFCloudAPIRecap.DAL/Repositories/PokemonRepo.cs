@@ -24,10 +24,12 @@ namespace TFCloudAPIRecap.DAL.Repositories
             return DC.Pokedex.ToList();
         }
 
-        public void Create(Pokemon p)
+        public int Create(Pokemon p)
         {
             DC.Pokedex.Add(p);
             DC.SaveChanges();
+            
+            return p.Id ?? 0;
         }
 
         public void Delete(int Id)
@@ -40,6 +42,11 @@ namespace TFCloudAPIRecap.DAL.Repositories
             return DC.Pokedex.Include(p => p.Types)
                  .ThenInclude(tp => tp.PokemonType)
                  .ToList().First(p => p.Id == Id);
+        }
+
+        public List<Pokemon> GetByType(int id) 
+        {
+            return DC.Pokedex.Where(p => p.Types.First(x => x.TypeId == id) != null).ToList(); 
         }
     }
 }

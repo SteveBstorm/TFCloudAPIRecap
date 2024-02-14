@@ -8,12 +8,12 @@ namespace TFCloudAPIRecap.DAL.Entities
 {
     public class Pokemon
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public string Race { get; set; }
         public int Height { get; set; }
         public int HP { get; set; }
         public string ImageURL { get; set; }
-        public List<Type_Pokemon> Types { get; set; }
+        public List<Type_Pokemon>? Types { get; set; }
 
     }
 }
