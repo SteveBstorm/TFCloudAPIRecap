@@ -27,6 +27,10 @@ namespace TFCloudAPIRecap.DAL.Repositories
 
         public IEnumerable<Type_Pokemon> GetAll()
         {
+            string req = "SELECT P.* FROM Pokemon P " +
+                "JOIN Type_Pokemon TP ON P.Id = TP.PokemonId " +
+                "WHERE TP.TypeId = @id";
+
             string sql = "SELECT * FROM Type_Pokemon";
             return _connection.Query<Type_Pokemon>(sql);
         }

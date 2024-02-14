@@ -1,4 +1,5 @@
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
 using TFCloudAPIRecap.DAL.Interfaces;
 using TFCloudAPIRecap.DAL.Repositories;
@@ -31,6 +32,11 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "images")), RequestPath = "/images"
+});
 
 app.MapControllers();
 

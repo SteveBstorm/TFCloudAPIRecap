@@ -14,4 +14,8 @@
     <ProjectReference Include="..\TFCloudAPIRecap.DAL\TFCloudAPIRecap.DAL.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="images\" />
+  </ItemGroup>
+
 </Project>
